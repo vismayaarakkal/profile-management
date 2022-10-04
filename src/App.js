@@ -1,24 +1,25 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
+import Signin from './components/Authentication/Signin';
+import SubCategory from './components/Admin/SubCategory';
+import ForgotPassword from './components/Authentication/ForgotPassword';
+import Dashboard from './components/User/Dashboard';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HashRouter>
+      <div className="App">
+        <Routes>
+          <Route exact path='/' element={<Signin />} />
+          <Route exact path='/sub-category' element={<SubCategory />} /> 
+          <Route exact path='/retreiveLogin' element={<ForgotPassword />} /> 
+          <Route exact path='/dashboard' element={<Dashboard />} /> 
+        </Routes>
+      </div>
+    </HashRouter>
   );
 }
 
